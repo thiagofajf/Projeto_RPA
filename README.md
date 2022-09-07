@@ -1,2 +1,2 @@
 # Projeto_RPA
-Script que captura os comandos de mouse e teclado do usuário e reproduz posteriormente. 
+Script que captura os comandos de mouse e teclado do usuário e gera um arquivo txt com os comandos em formato de código. Ao executar este arquivo reproduzirmos os movimentos feitos anteriormente.

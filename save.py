@@ -1,7 +1,7 @@
 import win32api
 import pyautogui
-import ctypes
 import time
+# import ctypes
 
 VK_CODE = {'backspace': 0x08,
            'tab': 0x09,
@@ -255,7 +255,7 @@ while ativo:
         i = win32api.GetKeyState(VK_CODE['i'])
         j = win32api.GetKeyState(VK_CODE['j'])
         k = win32api.GetKeyState(VK_CODE['k'])
-        l = win32api.GetKeyState(VK_CODE['l'])
+        l_ = win32api.GetKeyState(VK_CODE['l'])
         m = win32api.GetKeyState(VK_CODE['m'])
         n = win32api.GetKeyState(VK_CODE['n'])
         o = win32api.GetKeyState(VK_CODE['o'])
@@ -276,561 +276,636 @@ while ativo:
             state_left = click_left
             x, y = pyautogui.position()
             if click_left < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
                 positionStr = 'pyautogui.moveTo(' + str(x).rjust(4) + ',' + str(y).rjust(4) + ', ' + str(tempo) + ')\n'
                 lines = ['    ', positionStr, '    pyautogui.click()\n\n']
                 print(''.join(lines))
-
-                # return 'VK_LBUTTON' #O return fica muito bugado no Main. Não pega as teclas direito.
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                with open("Log de eventos.txt", "a") as arquivo:
                     arquivo.write(''.join(lines))
 
         elif click_right != state_right:
             state_right = click_right
             x, y = pyautogui.position()
             if click_right < 0:
-                click_right_time = time.time()
-                tempo = click_right_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
                 positionStr = 'pyautogui.moveTo(' + str(x).rjust(4) + ',' + str(y).rjust(4) + ', ' + str(tempo) + ')\n'
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n"]
                 print(''.join(lines))
-                # return 'VK_RBUTTON'
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                with open("Log de eventos.txt", "a") as arquivo:
                     arquivo.write(''.join(lines))
 
         elif zero != state_zero:
+            state_zero = zero
             if zero < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('0', interval = tempo)\n")
+                positionStr = "pyautogui.write('0', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif one != state_one:
             state_one = one
             if one < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('1', interval = tempo)\n")
+                positionStr = "pyautogui.write('1', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif two != state_two:
             state_two = two
             if two < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('2', interval = tempo)\n")
+                positionStr = "pyautogui.write('2', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif three != state_three:
             state_three = three
             if three < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('3', interval = tempo)\n")
+                positionStr = "pyautogui.write('3', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif four != state_four:
             state_four = four
             if four < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('4', interval = tempo)\n")
+                positionStr = "pyautogui.write('4', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif five != state_five:
             state_five = five
             if five < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('5', interval = tempo)\n")
+                positionStr = "pyautogui.write('5', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif six != state_six:
             state_six = six
             if six < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('6', interval = tempo)\n")
+                positionStr = "pyautogui.write('6', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif seven != state_seven:
             state_seven = seven
             if seven < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('7', interval = tempo)\n")
+                positionStr = "pyautogui.write('7', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif eight != state_eight:
             state_eight = eight
             if eight < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('8', interval = tempo)\n")
+                positionStr = "pyautogui.write('8', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif nine != state_nine:
             state_nine = nine
             if nine < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('9', interval = tempo)\n")
+                positionStr = "pyautogui.write('9', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_0 != state_numpad_0:
             state_numpad_0 = numpad_0
             if numpad_0 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('0', interval = tempo)\n")
+                positionStr = "pyautogui.write('0', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_1 != state_numpad_1:
             state_numpad_1 = numpad_1
             if numpad_1 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('1', interval = tempo)\n")
+                positionStr = "pyautogui.write('1', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_2 != state_numpad_2:
             state_numpad_2 = numpad_2
             if numpad_2 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('2', interval = tempo)\n")
+                positionStr = "pyautogui.write('2', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_3 != state_numpad_3:
             state_numpad_3 = numpad_3
             if numpad_3 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('3', interval = tempo)\n")
+                positionStr = "pyautogui.write('3', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_4 != state_numpad_4:
             state_numpad_4 = numpad_4
             if numpad_4 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('4', interval = tempo)\n")
+                positionStr = "pyautogui.write('4', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_5 != state_numpad_5:
             state_numpad_5 = numpad_5
             if numpad_5 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('5', interval = tempo)\n")
+                positionStr = "pyautogui.write('5', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_6 != state_numpad_6:
             state_numpad_6 = numpad_6
             if numpad_6 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('6', interval = tempo)\n")
+                positionStr = "pyautogui.write('6', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_7 != state_numpad_7:
             state_numpad_7 = numpad_7
             if numpad_7 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('7', interval = tempo)\n")
+                positionStr = "pyautogui.write('7', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_8 != state_numpad_8:
             state_numpad_8 = numpad_8
             if numpad_8 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('8', interval = tempo)\n")
+                positionStr = "pyautogui.write('8', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif numpad_9 != state_numpad_9:
             state_numpad_9 = numpad_9
-            if numpad_0 < 0:
-                state_zero = zero
-                zero_time = time.time()
-                tempo = zero_time - inicio
+            if numpad_9 < 0:
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")\n"
-                print(positionStr, end='')
-                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('9', interval = tempo)\n")
+                positionStr = "pyautogui.write('9', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif VK_LEFT != state_VK_LEFT:
             state_VK_LEFT = VK_LEFT
             if VK_LEFT < 0:
-                print("'\n VK_LEFT'")
-                # return 'enter'
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('left')\n")
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('left', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif VK_UP != state_VK_UP:
             state_VK_UP = VK_UP
             if VK_UP < 0:
-                print("'\n VK_UP'")
-                # return 'enter'
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('up')\n")
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('up', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif VK_RIGHT != state_VK_RIGHT:
             state_VK_RIGHT = VK_RIGHT
             if VK_RIGHT < 0:
-                print("'\n VK_RIGHT'")
-                # return 'enter'
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('right')\n")
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('right', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif VK_DOWN != state_VK_DOWN:
             state_VK_DOWN = VK_DOWN
             if VK_DOWN < 0:
-                print("'\n VK_DOWN'")
-                # return 'enter'
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('down')\n")
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('down', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif a != state_a:
             state_a = a
             if a < 0:
-                print("'a'")
-                # return 'enter'
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('a')\n")
+                positionStr = "pyautogui.write('a', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif b != state_b:
             state_b = b
             if b < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('b')\n")
+                positionStr = "pyautogui.write('b', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif c != state_c:
             state_c = c
             if c < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('c')\n")
+                positionStr = "pyautogui.write('c', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif d != state_d:
             state_d = d
             if d < 0:
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('d')\n")
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('d', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif e != state_e:
             state_e = e
             if e < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('e')\n")
+                positionStr = "pyautogui.write('e', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif f != state_f:
             state_f = f
             if f < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('f')\n")
+                positionStr = "pyautogui.write('f', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif g != state_g:
             state_g = g
             if g < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('g')\n")
+                positionStr = "pyautogui.write('g', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif h != state_h:
             state_h = h
             if h < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('h')\n")
+                positionStr = "pyautogui.write('h', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif i != state_i:
             state_i = i
             if i < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('i')\n")
+                positionStr = "pyautogui.write('i', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif j != state_j:
             state_j = j
             if j < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('j')\n")
+                positionStr = "pyautogui.write('j', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif k != state_k:
             state_k = k
             if k < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('k')\n")
+                positionStr = "pyautogui.write('k', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
-        elif l != state_l:
-            state_l = l
-            if l < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+        elif l_ != state_l:
+            state_l = l_
+            if l_ < 0:
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('l')\n")
+                positionStr = "pyautogui.write('l', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif m != state_m:
             state_m = m
             if m < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('m')\n")
+                positionStr = "pyautogui.write('m', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif n != state_n:
             state_n = n
             if n < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('n')\n")
+                positionStr = "pyautogui.write('n', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif o != state_o:
             state_o = o
             if o < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('o')\n")
+                positionStr = "pyautogui.write('o', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif p != state_p:
             state_p = p
             if p < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('p')\n")
+                positionStr = "pyautogui.write('p', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif q != state_q:
             state_q = q
             if q < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('q')\n")
+                positionStr = "pyautogui.write('q', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif r != state_r:
             state_r = r
             if r < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('r')\n")
+                positionStr = "pyautogui.write('r', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif s != state_s:
             state_s = s
             if s < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('s')\n")
+                positionStr = "pyautogui.write('s', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif t != state_t:
             state_t = t
             if t < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('t')\n")
+                positionStr = "pyautogui.write('t', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif u != state_u:
             state_u = u
             if u < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('u')\n")
+                positionStr = "pyautogui.write('u', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif v != state_v:
             state_v = v
             if v < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('v')\n")
+                positionStr = "pyautogui.write('v', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif w != state_w:
             state_w = w
             if w < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('w')\n")
+                positionStr = "pyautogui.write('w', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif x != state_x:
             state_x = x
             if x < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('x')\n")
+                positionStr = "pyautogui.write('x', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif y != state_y:
             state_y = y
             if y < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('y')\n")
+                positionStr = "pyautogui.write('y', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif z != state_z:
             state_z = z
             if z < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('z')\n")
+                positionStr = "pyautogui.write('z', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
 
         elif space != state_space:
             state_space = space
             if space < 0:
-                click_left_time = time.time()
-                tempo = click_left_time - inicio
+                step = time.time()
+                tempo = step - inicio
                 inicio = time.time()
-                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write(' ')\n")
+                positionStr = "pyautogui.write(' ', interval = " + str(tempo)
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
