@@ -3,6 +3,152 @@ import pyautogui
 import ctypes
 import time
 
+VK_CODE = {'backspace': 0x08,
+           'tab': 0x09,
+           'clear': 0x0C,
+           'enter': 0x0D,
+           'shift': 0x10,
+           'ctrl': 0x11,
+           'alt': 0x12,
+           'pause': 0x13,
+           'caps_lock': 0x14,
+           'esc': 0x1B,
+           'spacebar': 0x20,
+           'page_up': 0x21,
+           'page_down': 0x22,
+           'end': 0x23,
+           'home': 0x24,
+           'left_arrow': 0x25,
+           'up_arrow': 0x26,
+           'right_arrow': 0x27,
+           'down_arrow': 0x28,
+           'select': 0x29,
+           'print': 0x2A,
+           'execute': 0x2B,
+           'print_screen': 0x2C,
+           'ins': 0x2D,
+           'del': 0x2E,
+           'help': 0x2F,
+           '0': 0x30,
+           '1': 0x31,
+           '2': 0x32,
+           '3': 0x33,
+           '4': 0x34,
+           '5': 0x35,
+           '6': 0x36,
+           '7': 0x37,
+           '8': 0x38,
+           '9': 0x39,
+           'a': 0x41,
+           'b': 0x42,
+           'c': 0x43,
+           'd': 0x44,
+           'e': 0x45,
+           'f': 0x46,
+           'g': 0x47,
+           'h': 0x48,
+           'i': 0x49,
+           'j': 0x4A,
+           'k': 0x4B,
+           'l': 0x4C,
+           'm': 0x4D,
+           'n': 0x4E,
+           'o': 0x4F,
+           'p': 0x50,
+           'q': 0x51,
+           'r': 0x52,
+           's': 0x53,
+           't': 0x54,
+           'u': 0x55,
+           'v': 0x56,
+           'w': 0x57,
+           'x': 0x58,
+           'y': 0x59,
+           'z': 0x5A,
+           'numpad_0': 0x60,
+           'numpad_1': 0x61,
+           'numpad_2': 0x62,
+           'numpad_3': 0x63,
+           'numpad_4': 0x64,
+           'numpad_5': 0x65,
+           'numpad_6': 0x66,
+           'numpad_7': 0x67,
+           'numpad_8': 0x68,
+           'numpad_9': 0x69,
+           'multiply_key': 0x6A,
+           'add_key': 0x6B,
+           'separator_key': 0x6C,
+           'subtract_key': 0x6D,
+           'decimal_key': 0x6E,
+           'divide_key': 0x6F,
+           'F1': 0x70,
+           'F2': 0x71,
+           'F3': 0x72,
+           'F4': 0x73,
+           'F5': 0x74,
+           'F6': 0x75,
+           'F7': 0x76,
+           'F8': 0x77,
+           'F9': 0x78,
+           'F10': 0x79,
+           'F11': 0x7A,
+           'F12': 0x7B,
+           'F13': 0x7C,
+           'F14': 0x7D,
+           'F15': 0x7E,
+           'F16': 0x7F,
+           'F17': 0x80,
+           'F18': 0x81,
+           'F19': 0x82,
+           'F20': 0x83,
+           'F21': 0x84,
+           'F22': 0x85,
+           'F23': 0x86,
+           'F24': 0x87,
+           'num_lock': 0x90,
+           'scroll_lock': 0x91,
+           'left_shift': 0xA0,
+           'right_shift ': 0xA1,
+           'left_control': 0xA2,
+           'right_control': 0xA3,
+           'left_menu': 0xA4,
+           'right_menu': 0xA5,
+           'browser_back': 0xA6,
+           'browser_forward': 0xA7,
+           'browser_refresh': 0xA8,
+           'browser_stop': 0xA9,
+           'browser_search': 0xAA,
+           'browser_favorites': 0xAB,
+           'browser_start_and_home': 0xAC,
+           'volume_mute': 0xAD,
+           'volume_Down': 0xAE,
+           'volume_up': 0xAF,
+           'next_track': 0xB0,
+           'previous_track': 0xB1,
+           'stop_media': 0xB2,
+           'play/pause_media': 0xB3,
+           'start_mail': 0xB4,
+           'select_media': 0xB5,
+           'start_application_1': 0xB6,
+           'start_application_2': 0xB7,
+           'attn_key': 0xF6,
+           'crsel_key': 0xF7,
+           'exsel_key': 0xF8,
+           'play_key': 0xFA,
+           'zoom_key': 0xFB,
+           'clear_key': 0xFE,
+           '+': 0xBB,
+           ',': 0xBC,
+           '-': 0xBD,
+           '.': 0xBE,
+           '/': 0xBF,
+           ';': 0xBA,
+           '[': 0xDB,
+           '\\': 0xDC,
+           ']': 0xDD,
+           "'": 0xDE,
+           '`': 0xC0}
+
 inicio = time.time()  # Inicio tem o valor da era;
 
 with open("Log de eventos.txt", "w") as arquivo:
@@ -15,98 +161,116 @@ ativo = True
 while ativo:
     state_left = win32api.GetKeyState(0x01)  # Left button down = 0 or 1. Button up = -127 or -128
     state_right = win32api.GetKeyState(0x02)
-    state_zero = win32api.GetKeyState(0x30)
-    state_one = win32api.GetKeyState(0x31)
-    state_two = win32api.GetKeyState(0x32)
-    state_three = win32api.GetKeyState(0x33)
-    state_four = win32api.GetKeyState(0x34)
-    state_five = win32api.GetKeyState(0x35)
-    state_six = win32api.GetKeyState(0x36)
-    state_seven = win32api.GetKeyState(0x37)
-    state_eight = win32api.GetKeyState(0x38)
-    state_nine = win32api.GetKeyState(0x39)
-    state_enter = win32api.GetKeyState(0x0D)
-    state_Q = win32api.GetKeyState(0x51)
-    state_VK_LEFT = win32api.GetKeyState(0x25)
-    state_VK_UP = win32api.GetKeyState(0x26)
-    state_VK_RIGHT = win32api.GetKeyState(0x27)
-    state_VK_DOWN = win32api.GetKeyState(0x28)
-    state_ponto = win32api.GetKeyState(0xBE)
-    state_a = win32api.GetKeyState(0x41)
-    state_b = win32api.GetKeyState(0x42)
-    state_c = win32api.GetKeyState(0x43)
-    state_d = win32api.GetKeyState(0x44)
-    state_e = win32api.GetKeyState(0x45)
-    state_f = win32api.GetKeyState(0x46)
-    state_g = win32api.GetKeyState(0x47)
-    state_h = win32api.GetKeyState(0x48)
-    state_i = win32api.GetKeyState(0x49)
-    state_j = win32api.GetKeyState(0x4A)
-    state_k = win32api.GetKeyState(0x4B)
-    state_l = win32api.GetKeyState(0x4C)
-    state_m = win32api.GetKeyState(0x4D)
-    state_n = win32api.GetKeyState(0x4E)
-    state_o = win32api.GetKeyState(0x4F)
-    state_p = win32api.GetKeyState(0x50)
-    state_q = win32api.GetKeyState(0x51)
-    state_r = win32api.GetKeyState(0x52)
-    state_s = win32api.GetKeyState(0x53)
-    state_t = win32api.GetKeyState(0x54)
-    state_u = win32api.GetKeyState(0x55)
-    state_v = win32api.GetKeyState(0x56)
-    state_w = win32api.GetKeyState(0x57)
-    state_x = win32api.GetKeyState(0x58)
-    state_y = win32api.GetKeyState(0x59)
-    state_z = win32api.GetKeyState(0x5A)
-    state_space = win32api.GetKeyState(0x20)
+    state_zero = win32api.GetKeyState(VK_CODE['0'])
+    state_one = win32api.GetKeyState(VK_CODE['1'])
+    state_two = win32api.GetKeyState(VK_CODE['2'])
+    state_three = win32api.GetKeyState(VK_CODE['3'])
+    state_four = win32api.GetKeyState(VK_CODE['4'])
+    state_five = win32api.GetKeyState(VK_CODE['5'])
+    state_six = win32api.GetKeyState(VK_CODE['6'])
+    state_seven = win32api.GetKeyState(VK_CODE['7'])
+    state_eight = win32api.GetKeyState(VK_CODE['8'])
+    state_nine = win32api.GetKeyState(VK_CODE['9'])
+    state_numpad_0 = win32api.GetKeyState(VK_CODE['numpad_0'])
+    state_numpad_1 = win32api.GetKeyState(VK_CODE['numpad_1'])
+    state_numpad_2 = win32api.GetKeyState(VK_CODE['numpad_2'])
+    state_numpad_3 = win32api.GetKeyState(VK_CODE['numpad_3'])
+    state_numpad_4 = win32api.GetKeyState(VK_CODE['numpad_4'])
+    state_numpad_5 = win32api.GetKeyState(VK_CODE['numpad_5'])
+    state_numpad_6 = win32api.GetKeyState(VK_CODE['numpad_6'])
+    state_numpad_7 = win32api.GetKeyState(VK_CODE['numpad_7'])
+    state_numpad_8 = win32api.GetKeyState(VK_CODE['numpad_8'])
+    state_numpad_9 = win32api.GetKeyState(VK_CODE['numpad_9'])
+    state_enter = win32api.GetKeyState(VK_CODE['enter'])
+    state_VK_LEFT = win32api.GetKeyState(VK_CODE['left_arrow'])
+    state_VK_UP = win32api.GetKeyState(VK_CODE['up_arrow'])
+    state_VK_RIGHT = win32api.GetKeyState(VK_CODE['right_arrow'])
+    state_VK_DOWN = win32api.GetKeyState(VK_CODE['down_arrow'])
+    state_ponto = win32api.GetKeyState(VK_CODE['.'])
+    state_a = win32api.GetKeyState(VK_CODE['a'])
+    state_b = win32api.GetKeyState(VK_CODE['b'])
+    state_c = win32api.GetKeyState(VK_CODE['c'])
+    state_d = win32api.GetKeyState(VK_CODE['d'])
+    state_e = win32api.GetKeyState(VK_CODE['e'])
+    state_f = win32api.GetKeyState(VK_CODE['f'])
+    state_g = win32api.GetKeyState(VK_CODE['g'])
+    state_h = win32api.GetKeyState(VK_CODE['h'])
+    state_i = win32api.GetKeyState(VK_CODE['i'])
+    state_j = win32api.GetKeyState(VK_CODE['j'])
+    state_k = win32api.GetKeyState(VK_CODE['k'])
+    state_l = win32api.GetKeyState(VK_CODE['l'])
+    state_m = win32api.GetKeyState(VK_CODE['m'])
+    state_n = win32api.GetKeyState(VK_CODE['n'])
+    state_o = win32api.GetKeyState(VK_CODE['o'])
+    state_p = win32api.GetKeyState(VK_CODE['p'])
+    state_q = win32api.GetKeyState(VK_CODE['q'])
+    state_r = win32api.GetKeyState(VK_CODE['r'])
+    state_s = win32api.GetKeyState(VK_CODE['s'])
+    state_t = win32api.GetKeyState(VK_CODE['t'])
+    state_u = win32api.GetKeyState(VK_CODE['u'])
+    state_v = win32api.GetKeyState(VK_CODE['v'])
+    state_w = win32api.GetKeyState(VK_CODE['w'])
+    state_x = win32api.GetKeyState(VK_CODE['x'])
+    state_y = win32api.GetKeyState(VK_CODE['y'])
+    state_z = win32api.GetKeyState(VK_CODE['z'])
+    state_space = win32api.GetKeyState(VK_CODE['spacebar'])
     while True:
 
         click_left = win32api.GetKeyState(0x01)
         click_right = win32api.GetKeyState(0x02)
-        zero = win32api.GetKeyState(0x30)
-        one = win32api.GetKeyState(0x31)
-        two = win32api.GetKeyState(0x32)
-        three = win32api.GetKeyState(0x33)
-        four = win32api.GetKeyState(0x34)
-        five = win32api.GetKeyState(0x35)
-        six = win32api.GetKeyState(0x36)
-        seven = win32api.GetKeyState(0x37)
-        eight = win32api.GetKeyState(0x38)
-        nine = win32api.GetKeyState(0x39)
-        Enter = win32api.GetKeyState(0x0D)
-        Q = win32api.GetKeyState(0x51)
-        VK_LEFT = win32api.GetKeyState(0x25)
-        VK_UP = win32api.GetKeyState(0x26)
-        VK_RIGHT = win32api.GetKeyState(0x27)
-        VK_DOWN = win32api.GetKeyState(0x28)
-        ponto = win32api.GetKeyState(0xBE)
-        a = win32api.GetKeyState(0x41)
-        b = win32api.GetKeyState(0x42)
-        c = win32api.GetKeyState(0x43)
-        d = win32api.GetKeyState(0x44)
-        e = win32api.GetKeyState(0x45)
-        f = win32api.GetKeyState(0x46)
-        g = win32api.GetKeyState(0x47)
-        h = win32api.GetKeyState(0x48)
-        i = win32api.GetKeyState(0x49)
-        j = win32api.GetKeyState(0x4A)
-        k = win32api.GetKeyState(0x4B)
-        l = win32api.GetKeyState(0x4C)
-        m = win32api.GetKeyState(0x4D)
-        n = win32api.GetKeyState(0x4E)
-        o = win32api.GetKeyState(0x4F)
-        p = win32api.GetKeyState(0x50)
-        q = win32api.GetKeyState(0x51)
-        r = win32api.GetKeyState(0x52)
-        s = win32api.GetKeyState(0x53)
-        t = win32api.GetKeyState(0x54)
-        u = win32api.GetKeyState(0x55)
-        v = win32api.GetKeyState(0x56)
-        w = win32api.GetKeyState(0x57)
-        x = win32api.GetKeyState(0x58)
-        y = win32api.GetKeyState(0x59)
-        z = win32api.GetKeyState(0x5A)
-        space = win32api.GetKeyState(0x20)
+        zero = win32api.GetKeyState(VK_CODE['0'])
+        one = win32api.GetKeyState(VK_CODE['1'])
+        two = win32api.GetKeyState(VK_CODE['2'])
+        three = win32api.GetKeyState(VK_CODE['3'])
+        four = win32api.GetKeyState(VK_CODE['4'])
+        five = win32api.GetKeyState(VK_CODE['5'])
+        six = win32api.GetKeyState(VK_CODE['6'])
+        seven = win32api.GetKeyState(VK_CODE['7'])
+        eight = win32api.GetKeyState(VK_CODE['8'])
+        nine = win32api.GetKeyState(VK_CODE['9'])
+        numpad_0 = win32api.GetKeyState(VK_CODE['numpad_0'])
+        numpad_1 = win32api.GetKeyState(VK_CODE['numpad_1'])
+        numpad_2 = win32api.GetKeyState(VK_CODE['numpad_2'])
+        numpad_3 = win32api.GetKeyState(VK_CODE['numpad_3'])
+        numpad_4 = win32api.GetKeyState(VK_CODE['numpad_4'])
+        numpad_5 = win32api.GetKeyState(VK_CODE['numpad_5'])
+        numpad_6 = win32api.GetKeyState(VK_CODE['numpad_6'])
+        numpad_7 = win32api.GetKeyState(VK_CODE['numpad_7'])
+        numpad_8 = win32api.GetKeyState(VK_CODE['numpad_8'])
+        numpad_9 = win32api.GetKeyState(VK_CODE['numpad_9'])
+        enter = win32api.GetKeyState(VK_CODE['enter'])
+        VK_LEFT = win32api.GetKeyState(VK_CODE['left_arrow'])
+        VK_UP = win32api.GetKeyState(VK_CODE['up_arrow'])
+        VK_RIGHT = win32api.GetKeyState(VK_CODE['right_arrow'])
+        VK_DOWN = win32api.GetKeyState(VK_CODE['down_arrow'])
+        ponto = win32api.GetKeyState(VK_CODE['.'])
+        a = win32api.GetKeyState(VK_CODE['a'])
+        b = win32api.GetKeyState(VK_CODE['b'])
+        c = win32api.GetKeyState(VK_CODE['c'])
+        d = win32api.GetKeyState(VK_CODE['d'])
+        e = win32api.GetKeyState(VK_CODE['e'])
+        f = win32api.GetKeyState(VK_CODE['f'])
+        g = win32api.GetKeyState(VK_CODE['g'])
+        h = win32api.GetKeyState(VK_CODE['h'])
+        i = win32api.GetKeyState(VK_CODE['i'])
+        j = win32api.GetKeyState(VK_CODE['j'])
+        k = win32api.GetKeyState(VK_CODE['k'])
+        l = win32api.GetKeyState(VK_CODE['l'])
+        m = win32api.GetKeyState(VK_CODE['m'])
+        n = win32api.GetKeyState(VK_CODE['n'])
+        o = win32api.GetKeyState(VK_CODE['o'])
+        p = win32api.GetKeyState(VK_CODE['p'])
+        q = win32api.GetKeyState(VK_CODE['q'])
+        r = win32api.GetKeyState(VK_CODE['r'])
+        s = win32api.GetKeyState(VK_CODE['s'])
+        t = win32api.GetKeyState(VK_CODE['t'])
+        u = win32api.GetKeyState(VK_CODE['u'])
+        v = win32api.GetKeyState(VK_CODE['v'])
+        w = win32api.GetKeyState(VK_CODE['w'])
+        x = win32api.GetKeyState(VK_CODE['x'])
+        y = win32api.GetKeyState(VK_CODE['y'])
+        z = win32api.GetKeyState(VK_CODE['z'])
+        space = win32api.GetKeyState(VK_CODE['spacebar'])
 
         if click_left != state_left:
             state_left = click_left
@@ -131,7 +295,7 @@ while ativo:
                 tempo = click_right_time - inicio
                 inicio = time.time()
                 positionStr = 'pyautogui.moveTo(' + str(x).rjust(4) + ',' + str(y).rjust(4) + ', ' + str(tempo) + ')\n'
-                #print(positionStr, end='')
+                print(positionStr, end='')
                 lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 print(''.join(lines))
                 # return 'VK_RBUTTON'
@@ -144,7 +308,6 @@ while ativo:
                 zero_time = time.time()
                 tempo = zero_time - inicio
                 inicio = time.time()
-                print("0")
                 positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")\n"
                 print(positionStr, end='')
                 lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
@@ -154,91 +317,249 @@ while ativo:
         elif one != state_one:
             state_one = one
             if one < 0:
-                print('1')
-                # return '1'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('1')\n")
+                    arquivo.write("    pyautogui.write('1', interval = tempo)\n")
 
         elif two != state_two:
             state_two = two
             if two < 0:
-                print('2')
-                # return '2'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('2')\n")
+                    arquivo.write("    pyautogui.write('2', interval = tempo)\n")
 
         elif three != state_three:
             state_three = three
             if three < 0:
-                print('3')
-                # return '3'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('3')\n")
+                    arquivo.write("    pyautogui.write('3', interval = tempo)\n")
 
         elif four != state_four:
             state_four = four
             if four < 0:
-                print('4')
-                # return '4'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('4')\n")
+                    arquivo.write("    pyautogui.write('4', interval = tempo)\n")
 
         elif five != state_five:
             state_five = five
             if five < 0:
-                print('5')
-                # return '5'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('5')\n")
+                    arquivo.write("    pyautogui.write('5', interval = tempo)\n")
 
         elif six != state_six:
             state_six = six
             if six < 0:
-                print('6')
-                # return '6'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('6')\n")
+                    arquivo.write("    pyautogui.write('6', interval = tempo)\n")
 
         elif seven != state_seven:
             state_seven = seven
             if seven < 0:
-                print('7')
-                # return '7'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('7')\n")
+                    arquivo.write("    pyautogui.write('7', interval = tempo)\n")
 
         elif eight != state_eight:
             state_eight = eight
             if eight < 0:
-                print('8')
-                # return '8'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('8')\n")
+                    arquivo.write("    pyautogui.write('8', interval = tempo)\n")
 
         elif nine != state_nine:
             state_nine = nine
             if nine < 0:
-                print('9')
-                # return '9'
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    pyautogui.write('9')\n")
+                    arquivo.write("    pyautogui.write('9', interval = tempo)\n")
 
-        elif Enter != state_enter:
-            state_enter = Enter
-            if Enter < 0:
-                print("'\n enter'")
-                # return 'enter'
+        elif numpad_0 != state_numpad_0:
+            state_numpad_0 = numpad_0
+            if numpad_0 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
                 with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
-                    arquivo.write("    time.sleep(3)\n")
-                    arquivo.write("    pyautogui.press('enter')\n")
-                    arquivo.write("    time.sleep(3)\n")
+                    arquivo.write("    pyautogui.write('0', interval = tempo)\n")
 
-        elif Q != state_Q:
-            state_Q = Q
-            if Q < 0:
-                ativo = False
-                print("'\n Q'")
-                ctypes.windll.user32.MessageBoxW(0, "Finalizado", "Lupa Automação", 1)
+        elif numpad_1 != state_numpad_1:
+            state_numpad_1 = numpad_1
+            if numpad_1 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('1', interval = tempo)\n")
+
+        elif numpad_2 != state_numpad_2:
+            state_numpad_2 = numpad_2
+            if numpad_2 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('2', interval = tempo)\n")
+
+        elif numpad_3 != state_numpad_3:
+            state_numpad_3 = numpad_3
+            if numpad_3 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('3', interval = tempo)\n")
+
+        elif numpad_4 != state_numpad_4:
+            state_numpad_4 = numpad_4
+            if numpad_4 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('4', interval = tempo)\n")
+
+        elif numpad_5 != state_numpad_5:
+            state_numpad_5 = numpad_5
+            if numpad_5 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('5', interval = tempo)\n")
+
+        elif numpad_6 != state_numpad_6:
+            state_numpad_6 = numpad_6
+            if numpad_6 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('6', interval = tempo)\n")
+
+        elif numpad_7 != state_numpad_7:
+            state_numpad_7 = numpad_7
+            if numpad_7 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('7', interval = tempo)\n")
+
+        elif numpad_8 != state_numpad_8:
+            state_numpad_8 = numpad_8
+            if numpad_8 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('8', interval = tempo)\n")
+
+        elif numpad_9 != state_numpad_9:
+            state_numpad_9 = numpad_9
+            if numpad_0 < 0:
+                state_zero = zero
+                zero_time = time.time()
+                tempo = zero_time - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")\n"
+                print(positionStr, end='')
+                lines = ["    ", positionStr, "    pyautogui.click(button='right')\n\n"]
+                with open("Log de eventos.txt", "a") as arquivo:  # adiciona uma informação ao texto original
+                    arquivo.write("    pyautogui.write('9', interval = tempo)\n")
 
         elif VK_LEFT != state_VK_LEFT:
             state_VK_LEFT = VK_LEFT
