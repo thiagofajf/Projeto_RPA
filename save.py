@@ -3,6 +3,7 @@ import pyautogui
 import time
 # import ctypes
 
+
 VK_CODE = {'backspace': 0x08,
            'tab': 0x09,
            'clear': 0x0C,
@@ -149,6 +150,7 @@ VK_CODE = {'backspace': 0x08,
            "'": 0xDE,
            '`': 0xC0}
 
+ativo = True
 inicio = time.time()  # Inicio tem o valor da era;
 
 with open("Log de eventos.txt", "w") as arquivo:
@@ -156,8 +158,6 @@ with open("Log de eventos.txt", "w") as arquivo:
     arquivo.write("\n")
     arquivo.write("\nwhile True:\n""\n")
 
-
-ativo = True
 while ativo:
     state_left = win32api.GetKeyState(0x01)  # Left button down = 0 or 1. Button up = -127 or -128
     state_right = win32api.GetKeyState(0x02)
@@ -214,6 +214,12 @@ while ativo:
     state_y = win32api.GetKeyState(VK_CODE['y'])
     state_z = win32api.GetKeyState(VK_CODE['z'])
     state_space = win32api.GetKeyState(VK_CODE['spacebar'])
+    state_ponto = win32api.GetKeyState(VK_CODE['.'])
+    state_mais = win32api.GetKeyState(VK_CODE['+'])
+    state_virgula = win32api.GetKeyState(VK_CODE[','])
+    state_traco = win32api.GetKeyState(VK_CODE['-'])
+    state_virgula = win32api.GetKeyState(VK_CODE[','])
+
     while True:
 
         click_left = win32api.GetKeyState(0x01)
@@ -271,15 +277,17 @@ while ativo:
         y = win32api.GetKeyState(VK_CODE['y'])
         z = win32api.GetKeyState(VK_CODE['z'])
         space = win32api.GetKeyState(VK_CODE['spacebar'])
+        ponto = win32api.GetKeyState(VK_CODE['.'])
 
         if click_left != state_left:
             state_left = click_left
-            x, y = pyautogui.position()
             if click_left < 0:
+                x, y = pyautogui.position()
+                print(pyautogui.position())
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = 'pyautogui.moveTo(' + str(x).rjust(4) + ',' + str(y).rjust(4) + ', ' + str(tempo) + ')\n'
+                positionStr = 'pyautogui.moveTo(' + str(x) + ',' + str(y) + ', ' + str(tempo) + ')\n'
                 lines = ['    ', positionStr, '    pyautogui.click()\n\n']
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -304,7 +312,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('0', interval = " + str(tempo)
+                positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -316,7 +324,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('1', interval = " + str(tempo)
+                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -328,7 +336,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('2', interval = " + str(tempo)
+                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -340,7 +348,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('3', interval = " + str(tempo)
+                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -352,7 +360,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('4', interval = " + str(tempo)
+                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -364,7 +372,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('5', interval = " + str(tempo)
+                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -376,7 +384,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('6', interval = " + str(tempo)
+                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -388,7 +396,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('7', interval = " + str(tempo)
+                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -400,7 +408,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('8', interval = " + str(tempo)
+                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -412,7 +420,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('9', interval = " + str(tempo)
+                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -424,7 +432,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('0', interval = " + str(tempo)
+                positionStr = "pyautogui.write('0', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -436,7 +444,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('1', interval = " + str(tempo)
+                positionStr = "pyautogui.write('1', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -448,7 +456,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('2', interval = " + str(tempo)
+                positionStr = "pyautogui.write('2', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -460,7 +468,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('3', interval = " + str(tempo)
+                positionStr = "pyautogui.write('3', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -472,7 +480,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('4', interval = " + str(tempo)
+                positionStr = "pyautogui.write('4', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -484,7 +492,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('5', interval = " + str(tempo)
+                positionStr = "pyautogui.write('5', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -496,7 +504,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('6', interval = " + str(tempo)
+                positionStr = "pyautogui.write('6', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -508,7 +516,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('7', interval = " + str(tempo)
+                positionStr = "pyautogui.write('7', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -520,7 +528,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('8', interval = " + str(tempo)
+                positionStr = "pyautogui.write('8', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -532,7 +540,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('9', interval = " + str(tempo)
+                positionStr = "pyautogui.write('9', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -544,7 +552,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('left', interval = " + str(tempo)
+                positionStr = "pyautogui.write('left', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -556,7 +564,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('up', interval = " + str(tempo)
+                positionStr = "pyautogui.write('up', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -568,7 +576,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('right', interval = " + str(tempo)
+                positionStr = "pyautogui.write('right', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -580,7 +588,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('down', interval = " + str(tempo)
+                positionStr = "pyautogui.write('down', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -592,7 +600,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('a', interval = " + str(tempo)
+                positionStr = "pyautogui.write('a', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -604,7 +612,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('b', interval = " + str(tempo)
+                positionStr = "pyautogui.write('b', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -616,7 +624,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('c', interval = " + str(tempo)
+                positionStr = "pyautogui.write('c', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -628,7 +636,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('d', interval = " + str(tempo)
+                positionStr = "pyautogui.write('d', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -640,7 +648,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('e', interval = " + str(tempo)
+                positionStr = "pyautogui.write('e', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -652,7 +660,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('f', interval = " + str(tempo)
+                positionStr = "pyautogui.write('f', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -664,7 +672,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('g', interval = " + str(tempo)
+                positionStr = "pyautogui.write('g', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -676,7 +684,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('h', interval = " + str(tempo)
+                positionStr = "pyautogui.write('h', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -688,7 +696,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('i', interval = " + str(tempo)
+                positionStr = "pyautogui.write('i', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -700,7 +708,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('j', interval = " + str(tempo)
+                positionStr = "pyautogui.write('j', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -712,7 +720,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('k', interval = " + str(tempo)
+                positionStr = "pyautogui.write('k', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -724,7 +732,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('l', interval = " + str(tempo)
+                positionStr = "pyautogui.write('l', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -736,7 +744,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('m', interval = " + str(tempo)
+                positionStr = "pyautogui.write('m', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -748,7 +756,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('n', interval = " + str(tempo)
+                positionStr = "pyautogui.write('n', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -760,7 +768,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('o', interval = " + str(tempo)
+                positionStr = "pyautogui.write('o', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -772,7 +780,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('p', interval = " + str(tempo)
+                positionStr = "pyautogui.write('p', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -784,7 +792,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('q', interval = " + str(tempo)
+                positionStr = "pyautogui.write('q', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -796,7 +804,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('r', interval = " + str(tempo)
+                positionStr = "pyautogui.write('r', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -808,7 +816,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('s', interval = " + str(tempo)
+                positionStr = "pyautogui.write('s', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -820,7 +828,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('t', interval = " + str(tempo)
+                positionStr = "pyautogui.write('t', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -832,7 +840,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('u', interval = " + str(tempo)
+                positionStr = "pyautogui.write('u', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -844,7 +852,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('v', interval = " + str(tempo)
+                positionStr = "pyautogui.write('v', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -856,7 +864,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('w', interval = " + str(tempo)
+                positionStr = "pyautogui.write('w', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -868,7 +876,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('x', interval = " + str(tempo)
+                positionStr = "pyautogui.write('x', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -880,7 +888,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('y', interval = " + str(tempo)
+                positionStr = "pyautogui.write('y', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -892,7 +900,7 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write('z', interval = " + str(tempo)
+                positionStr = "pyautogui.write('z', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
@@ -904,8 +912,34 @@ while ativo:
                 step = time.time()
                 tempo = step - inicio
                 inicio = time.time()
-                positionStr = "pyautogui.write(' ', interval = " + str(tempo)
+                positionStr = "pyautogui.write(' ', interval = " + str(tempo) + ")"
                 lines = ["    ", positionStr, "\n"]
                 print(''.join(lines))
                 with open("Log de eventos.txt", "a") as arquivo:
                     arquivo.write(''.join(lines))
+
+        elif enter != state_enter:
+            state_enter = enter
+            if enter < 0:
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('enter', interval = " + str(tempo) + ")"
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
+
+        elif ponto != state_ponto:
+            state_ponto = ponto
+            if ponto < 0:
+                step = time.time()
+                tempo = step - inicio
+                inicio = time.time()
+                positionStr = "pyautogui.write('.', interval = " + str(tempo) + ")"
+                lines = ["    ", positionStr, "\n"]
+                print(''.join(lines))
+                with open("Log de eventos.txt", "a") as arquivo:
+                    arquivo.write(''.join(lines))
+
+
